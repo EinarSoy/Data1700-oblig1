@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Kinobillettregistrering</title>
+</head>
+<body>
+    <div>
+        <!--Rullegardin for filmregistrering-->
+        <h1>Kinobillettregistrering</h1>
+        <label for="filmSelect">Velg film:</label>
+        <select id="filmSelect">
+            <option value="film-Michael_Clayton">Michael Clayton (2007)</option>
+            <option value="film-American_Psycho">American Psycho (2000)</option>
+            <option value="film-Shutter_Island">Shutter Island (2010)</option>
+            <option value="film-Identity">Identity (2003)</option>
+            <option value="film-Goodfellas">Goodfellas (1990)</option>
+        </select>
+    </div>
+
+    <div>
+
+        <!--Personinfo-->
+        <ul style="list-style-type: none;padding-left: 0;">
+            <li>
+                <label for="fornavnInput">Fornavn:</label>
+                <input type="text" id="fornavnInput">
+            </li>
+            <li>
+                <label for="etternavnInput">Etternavn:</label>
+                <input type="text" id="etternavnInput">
+            </li>
+            <li>
+                <label for="telefonInput">Telefonnr:</label>
+                <input type="text" id="telefonInput">
+            </li>
+            <li>
+                <label for="epostInput">Epost:</label>
+                <input type="text" id="epostInput">
+            </li>
+        </ul>
+
+    </div>
+
+    <div>
+        <!--Billetkjøpknapp-->
+        <button onclick="kjopBillett()">Kjøp billett</button>
+    </div>
+
+    <div id="alleBilletter">
+        <h2>Alle billetter</h2>
+        <!--Kjøpe billetter havner her-->
+    </div>
+
+    <div>
+        <button onclick="slettBilletter()">Slett alle billettene</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
