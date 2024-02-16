@@ -4,57 +4,95 @@
     <meta charset="UTF-8">
     <title>Kinobillettregistrering</title>
 </head>
-<body>
+<body style="margin-left: 2vw; margin-right: 2vw;">
     <div>
         <!--Rullegardin for filmregistrering-->
         <h1>Kinobillettregistrering</h1>
         <label for="filmSelect">Velg film:</label>
         <select id="filmSelect">
-            <option value="film-Michael_Clayton">Michael Clayton (2007)</option>
-            <option value="film-American_Psycho">American Psycho (2000)</option>
-            <option value="film-Shutter_Island">Shutter Island (2010)</option>
-            <option value="film-Identity">Identity (2003)</option>
-            <option value="film-Goodfellas">Goodfellas (1990)</option>
+            <option value="Michael Clayton (2007)">Michael Clayton (2007)</option>
+            <option value="American Psycho (2000)">American Psycho (2000)</option>
+            <option value="Shutter Island (2010)">Shutter Island (2010)</option>
+            <option value="Identity (2003)">Identity (2003)</option>
+            <option value="Goodfellas (1990)">Goodfellas (1990)</option>
         </select>
+        <!--Feilmelding for filmvalg-->
+        <span class="errormessage" id="filmSelectErrorMessage" style="margin-left: 5px; width: 150px;"></span>
+    </div>
+
+    <!--Registrering av personinformasjon-->
+    <div class="inputarea" style="margin-top: 15px;">
+
+        <!--Kolonne nr.1 (labels)-->
+        <div class="inputcolumn">
+            <label for="antallInput">Antall:</label><br>
+            <label for="fornavnInput">Fornavn:</label><br>
+            <label for="etternavnInput">Etternavn:</label><br>
+            <label for="telefonInput">Telefonnr:</label><br>
+            <label for="epostInput">Epost:</label>
+        </div>
+
+        <!--Kolonne nr.2 (inputs)-->
+        <div class="inputcolumn">
+            <input type="number" id="antallInput" style="max-width: 75px;"><br>
+            <input type="text" id="fornavnInput" style="max-width: 150px;"><br>
+            <input type="text" id="etternavnInput" style="max-width: 150px;"><br>
+            <input type="tel" id="telefonInput" style="max-width: 150px;"><br>
+            <input type="email" id="epostInput" style="max-width: 150px;">
+        </div>
+
+        <!--Kolonne nr. 3 (feilmeldinger)-->
+        <div class="inputcolumn">
+            <span class="errormessage" id="antallInputErrorMessage"></span><br>
+            <span class="errormessage" id="fornavnInputErrorMessage"></span><br>
+            <span class="errormessage" id="etternavnInputErrorMessage"></span><br>
+            <span class="errormessage" id="telefonInputErrorMessage"></span><br>
+            <span class="errormessage" id="epostInputErrorMessage"></span><br>
+        </div>
     </div>
 
     <div>
-
-        <!--Personinfo-->
-        <ul style="list-style-type: none;padding-left: 0;">
-            <li>
-                <label for="fornavnInput">Fornavn:</label>
-                <input type="text" id="fornavnInput">
-            </li>
-            <li>
-                <label for="etternavnInput">Etternavn:</label>
-                <input type="text" id="etternavnInput">
-            </li>
-            <li>
-                <label for="telefonInput">Telefonnr:</label>
-                <input type="text" id="telefonInput">
-            </li>
-            <li>
-                <label for="epostInput">Epost:</label>
-                <input type="text" id="epostInput">
-            </li>
-        </ul>
-
-    </div>
-
-    <div>
-        <!--Billetkjøpknapp-->
+        <!--knapp for gjennomføring av billettkjøp-->
         <button onclick="kjopBillett()">Kjøp billett</button>
     </div>
 
+    <!--Liste over alle billetter-->
     <div id="alleBilletter">
         <h2>Alle billetter</h2>
-        <!--Kjøpe billetter havner her-->
+        <!--Alle de kjøpte billettene vil skrives ned her-->
     </div>
 
+    <!--Knapp for sletting av billetter-->
     <div>
         <button onclick="slettBilletter()">Slett alle billettene</button>
     </div>
+
+    
+    <style>
+    /* - - - Styling for inputområdet - - - */
+    .inputarea {
+        display: grid;
+        grid-template-columns: 90px 155px 250px; /* Tre kolonner: label - input - error */
+        grid-column-gap: 10px; /* Avstand mellom kolonnene */
+    }
+
+    .inputcolumn label, .inputcolumn input {
+        vertical-align: middle;
+    }
+
+    .inputarea label {
+        display: inline-block;
+        margin: 1px;
+    }
+
+    /* - - - Styling for feilmeldinger - - - */
+    .errormessage {
+        color: red;
+        display: inline-block;
+        margin: 1px;
+    }
+
+    </style>
 
     <script src="script.js"></script>
 </body>
