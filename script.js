@@ -26,11 +26,15 @@ function kjopBillett() {
     if (etternavn === ""){
         etternavnInputErrorMessage.textContent = "Vennligst skriv inn etternavn."
     }
-    if (telefon === "" || isNaN(telefon)){
-        telefonInputErrorMessage.textContent = "Vennligst skriv inn telefonnummer."
+
+    // Validering av telefonnummer ved bruk av regex
+    if (telefon === "" || !validerTelefon(telefon)){
+        telefonInputErrorMessage.textContent = "Vennligst skriv inn et gyldig telefonnummer."
     }
-    if (epost === ""){
-        epostInputErrorMessage.textContent = "Vennligst skriv inn e-post."
+
+    // Validering av e-postadresse ved bruk av regex
+    if (epost === "" || !validerEpost(epost)){
+        epostInputErrorMessage.textContent = "Vennligst skriv inn en gyldig e-postadresse."
     }
     // "Samlevalidering" med return slik at alle feilmeldinger kan vises samtidig OG en "alert" dukker opp for å gi beskjed til brukeren
     if (
@@ -40,8 +44,9 @@ function kjopBillett() {
     etternavn === "" || 
     telefon === "" || 
     epost === "" || 
-    isNaN(telefon) || 
-    isNaN(antall)) {
+    !validerTelefon(telefon) || 
+    isNaN(antall) ||
+    !validerEpost(epost)) {
         alert("Vennligst fyll ut alle informasjonsfeltene.");
         return;
     }
@@ -65,6 +70,22 @@ function kjopBillett() {
     // Nullstiller alle inputfeltene
     nullstillInputfelt();
 }
+
+
+// Funksjon for validering av telefonnummer - kreves minst 8 siffer
+
+function validerTelefon(telefon) {
+    var re = /^\d{8,}$/; 
+    return re.test(telefon);
+}
+
+// Funksjon for validering av e-postadresse, hvor adressen må struktureres slik: eksempel@eksempel.eksempel
+// Adressen må altså inneholde "@" og vise til et domenenavn.
+function validerEpost(epost) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(epost);
+}
+
 
 // Funksjon for å oppdatere visningen av alle billetter
 function oppdaterBilletter() {
